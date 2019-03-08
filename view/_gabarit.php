@@ -8,3 +8,16 @@
 </head>
 
 <body>
+    <header>
+        <div>Logo</div>
+        <nav>
+            <div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Insert contentPage -->
+
+</body>
+
+</html>
