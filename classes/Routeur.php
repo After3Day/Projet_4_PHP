@@ -1,18 +1,11 @@
 <?php
 
-/*
-
-    Class Routeur
-    
-    creates routes and  find controller
-    
-*/
-
 class Routeur
 {
     private $request;
+    
     private $routes = [
-            "home.html" => ["controller" => 'Home', "method" => 'showHome']
+            "index.php" => ["controller" => 'Home', "method" => 'showHome'],
             // "home.html" => ["controller" => 'Home', "method" => 'showHome'],
             // "home.html" => ["controller" => 'Home', "method" => 'showHome'],
     ];
@@ -26,13 +19,15 @@ class Routeur
     {
         $request = $this->request;
         
-        if(key_exists($request, $this->routes))
+        if($this->request == "index.php")
         {
-            $controller = $this->routes[$request]['controller'];
-            $method = $this->routes[$request]['method'];
+            /*$controller = $this->routes[$request]['controller'];
+            $method     = $this->routes[$request]['method'];
 
             $currentController = new $controller;
-            $currentController->$method();
+            $currentController->$method();*/
+            include_once VIEW.'home.php';
+            
 
         } else  {
             echo '404';

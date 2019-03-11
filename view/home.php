@@ -1,2 +1,3 @@
 <?php
-    include_once('_gabarit.php');
+    
+include_once '_gabarit.php';

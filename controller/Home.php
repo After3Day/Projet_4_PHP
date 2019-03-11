@@ -8,14 +8,14 @@ class Home
 	public function showHome()
 	{
 
-		$manager = new PostManager();
-		$Posts = $manager-> /* findPost() */;
+		/*$manager = new PostManager();
+		$Posts = $manager->  findPost() ;*/
 
 		$myView = new View('home');
-		$myView->render($Posts);
+		$myView->render();
 	}
 
-	public function showPost()
+	/*public function showPost()
 	{
 
 	}
@@ -23,5 +23,5 @@ class Home
 	public function showComments()
 	{
 
-	}
+	}*/
 }

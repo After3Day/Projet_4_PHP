@@ -1,15 +1,15 @@
 <?php
 
-//include_once('_config.php');
+include_once '_config.php';
 
-//MyAutoload::start();
+MyAutoload::start();
 
-include 'view/_gabarit.php';
+$request = $_GET['R'];
 
-/*$routeur = new Routeur($request);
+$routeur = new Routeur($request);
 $routeur->renderController();
 
- frontController
+/* frontController
   
 Instancier variables et constantes
 Autoload qui charge toutes les classe
