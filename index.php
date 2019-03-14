@@ -1,22 +1,18 @@
 <?php
 
-//include_once('_config.php');
+include_once '_config.php';
 
-//MyAutoload::start();
+MyAutoload::start();
 
-include 'view/_gabarit.php';
+if(isset($_GET['r']))
+{
+	$request = $_GET['r'];
 
-/*$routeur = new Routeur($request);
+} else {
+	$request = 'index';
+}
+
+
+$routeur = new Routeur($request);
 $routeur->renderController();
 
- frontController
-  
-Instancier variables et constantes
-Autoload qui charge toutes les classe
-
-htaccess recupère url
-
-instancie routeur
-renderController();
-
-*/

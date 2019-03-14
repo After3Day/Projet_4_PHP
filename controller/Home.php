@@ -9,13 +9,14 @@ class Home
 	{
 
 		$manager = new PostManager();
-		$Posts = $manager-> /* findPost() */;
+		$LastPost = $manager->findLastPost();
 
 		$myView = new View('home');
-		$myView->render($Posts);
+		$myView->render($LastPost);
+		
 	}
 
-	public function showPost()
+	/*public function showPost()
 	{
 
 	}
@@ -23,5 +24,5 @@ class Home
 	public function showComments()
 	{
 
-	}
+	}*/
 }
