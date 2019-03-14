@@ -5,7 +5,7 @@ class Routeur
     private $request;
     
     private $routes = [
-            "index.html" => ["controller" => 'Home', "method" => 'showHome'],
+            "index.php" => ["controller" => 'Home', "method" => 'showHome'],
             // "home.html" => ["controller" => 'Home', "method" => 'showHome'],
             // "home.html" => ["controller" => 'Home', "method" => 'showHome'],
     ];
@@ -19,14 +19,13 @@ class Routeur
     {
         $request = $this->request;
         
-        if($this->request == "index.html")
+        if($this->request == "index.php")
         {
-            /*$controller = $this->routes[$request]['controller'];
+            $controller = $this->routes[$request]['controller'];
             $method     = $this->routes[$request]['method'];
 
             $currentController = new $controller;
-            $currentController->$method();*/
-            include_once (VIEW.'home.php');
+            $currentController->$method();
             
 
         } else  {

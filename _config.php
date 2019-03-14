@@ -12,8 +12,8 @@ class MyAutoload
 		$root = $_SERVER['DOCUMENT_ROOT'];
 		$host = $_SERVER['HTTP_HOST'];
 
+		define('HOST', 'https://'.$host.'/JF_Blog/');
 
-		define('HOST', $host.'/JF_Blog/');
 
 
 		define('ROOT', $root.'/JF_Blog/');

@@ -8,11 +8,12 @@ class Home
 	public function showHome()
 	{
 
-		/*$manager = new PostManager();
-		$Posts = $manager->  findPost() ;*/
+		$manager = new PostManager();
+		$LastPost = $manager->findLastPost();
 
 		$myView = new View('home');
-		$myView->render();
+		$myView->render($LastPost);
+		
 	}
 
 	/*public function showPost()
