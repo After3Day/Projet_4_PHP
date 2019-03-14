@@ -5,8 +5,8 @@ class Routeur
     private $request;
     
     private $routes = [
-            "index.php" => ["controller" => 'Home', "method" => 'showHome'],
-            // "home.html" => ["controller" => 'Home', "method" => 'showHome'],
+            "index" => ["controller" => 'Home', "method" => 'showHome'],
+            "home" => ["controller" => 'Home', "method" => 'showHome']
             // "home.html" => ["controller" => 'Home', "method" => 'showHome'],
     ];
     
@@ -19,7 +19,7 @@ class Routeur
     {
         $request = $this->request;
         
-        if($this->request == "index.php")
+        if(key_exists($request, $this->routes))
         {
             $controller = $this->routes[$request]['controller'];
             $method     = $this->routes[$request]['method'];

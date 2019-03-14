@@ -12,11 +12,9 @@ class MyAutoload
 		$root = $_SERVER['DOCUMENT_ROOT'];
 		$host = $_SERVER['HTTP_HOST'];
 
-		define('HOST', 'https://'.$host.'/JF_Blog/');
+		define('HOST', 'http://'.$host.'/');
+		define('ROOT', $root.'/');
 
-
-
-		define('ROOT', $root.'/JF_Blog/');
 
 		define('CONTROLLER', ROOT.'controller/');
 		define('MODEL', ROOT.'model/');
@@ -24,6 +22,11 @@ class MyAutoload
 		define('CLASSES', ROOT.'classes/');
 
 		define('ASSETS', HOST.'assets/');
+
+		define('DB_HOST', 'localhost');
+		define('DB_NAME', 'Blog_JF');
+		define('DB_USERNAME', 'root');
+		define('DB_PASSWORD', '');
 
 	}
 

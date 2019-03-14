@@ -5,11 +5,41 @@ body {
 }
 
 header {
+	display: flex;
+	justify-content: space-between;
 	width: 80%;
-	height: 60px;
+	height: auto;
 	margin:auto;
 	border: 1px solid black;
 	background-color: #82b7e3;
+}
+
+#Logo {
+	display: flex;
+	flex-direction: column;
+	word-wrap: normal;;
+	font-size: 2.5em;
+}
+
+#Logo img {
+	width: 50%;
+	height: auto;
+	margin: auto;
+}
+
+#Menu {
+	margin: auto;
+	font-size: 2em;
+	line-height: 2.5em;
+}
+
+#container {
+	width: 80%;
+	margin: auto;
+	display: flex;
+	justify-content: space-around;
+	flex-direction: column;
+
 }
 
 footer {
@@ -24,3 +54,4 @@ footer {
 	bottom: 0;
 	left:10%;
 }
+

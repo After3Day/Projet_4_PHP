@@ -2,7 +2,7 @@
 
 class View
 {
-	private $template
+	private $template;
 
 	public function __construct($template)
 	{

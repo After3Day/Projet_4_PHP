@@ -11,11 +11,20 @@
 
 <body>
     <header>
-        <div>Logo</div>
-        <nav>
-            <div>
+        <div id="Logo">
+            <img src="<?php echo ASSETS;?>images/horse-logo2a.jpg">
+            <span>Billet simple pour l'Alaska</span>
+        </div>
+            <div id="Menu">
+                <nav class="Menu">
+                    <a href="">Accueil</a>
+                    <span>|</span>
+                    <a href="">Mes Articles</a>
+                    <span>|</span>
+                    <a href="">Connexion</a>
+                </nav>
             </div>
-        </nav>
+        
     </header>
 
     <!-- Insert contentPage -->
