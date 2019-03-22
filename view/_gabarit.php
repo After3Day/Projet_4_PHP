@@ -17,11 +17,11 @@
         </div>
             <div id="Menu">
                 <nav class="Menu">
-                    <a href="">Accueil</a>
+                    <a href="<?php echo HOST;?>home">Accueil</a>
                     <span>|</span>
-                    <a href="">Mes Articles</a>
+                    <a href="<?php echo HOST;?>posts">Mes Articles</a>
                     <span>|</span>
-                    <a href="">Connexion</a>
+                    <a href="<?php echo HOST;?>login">Connexion</a>
                 </nav>
             </div>
         

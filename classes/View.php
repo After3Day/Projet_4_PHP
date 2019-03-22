@@ -9,10 +9,10 @@ class View
 		$this->template = $template;
 	}
 
-	public  function render($LastPost)
+	public  function render($params = array())
 	{
-        //$params = array()
-		//extract($params);
+        
+		extract($params);
 
 		$template = $this->template;
 
