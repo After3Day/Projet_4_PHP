@@ -5,9 +5,7 @@
         <meta name="viewport" content="width=device-width,initial-scale=1">
         <link type="text/css" href="<?php echo ASSETS;?>css/style.css" rel="stylesheet">
         <title>Mon blog de Voyage</title>
-    
     </head>
-
 
 <body>
     <header>
@@ -17,18 +15,23 @@
         </div>
             <div id="Menu">
                 <nav class="Menu">
-                    <a href="">Accueil</a>
-                    <span>|</span>
-                    <a href="">Mes Articles</a>
-                    <span>|</span>
-                    <a href="">Connexion</a>
+                    <a class="LienMenu" href="<?php echo HOST;?>home">Accueil</a>
+                    <span  class="SepMenu">|</span>
+                    <a class="LienMenu" href="<?php echo HOST;?>posts">Mes Articles</a>
+                    <span class="SepMenu">|</span>
+                    <a class="LienMenu" href="<?php echo HOST;?>login">Connexion</a>
                 </nav>
             </div>
-        
     </header>
+
+    <div class="Separateur"> </div>
+
 
     <!-- Insert contentPage -->
     <?php echo $contentPage;?>
+
+
+    <div class="Separateur" id="Separateur2">  </div>
 
     <footer>
         <div>Copyright © 2019 Erwan Pasche</div>

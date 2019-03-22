@@ -6,7 +6,8 @@ class Routeur
     
     private $routes = [
             "index" => ["controller" => 'Home', "method" => 'showHome'],
-            "home" => ["controller" => 'Home', "method" => 'showHome']
+            "home" => ["controller" => 'Home', "method" => 'showHome'],
+            "posts" => ["controller" => 'Home', "method" => 'showPosts'],
             // "home.html" => ["controller" => 'Home', "method" => 'showHome'],
     ];
     

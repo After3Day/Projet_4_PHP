@@ -12,7 +12,18 @@ class Home
 		$LastPost = $manager->findLastPost();
 
 		$myView = new View('home');
-		$myView->render($LastPost);
+		$myView->render(array('LastPost' => $LastPost));
+		
+	}
+
+	public function showPosts()
+	{
+
+		$manager = new PostManager();
+		$Posts = $manager->findPosts();
+
+		$myView = new View('posts');
+		$myView->render(array('Posts' => $Posts));
 		
 	}
 
