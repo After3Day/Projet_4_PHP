@@ -1,12 +1,7 @@
 <?php
 
 // Manager user -> Verif connexion et insert new user dans dbh
-/*
-	Stock infos nouveau membre -> public function register()
-	
-	Verf mdp -> public function connexion() => passwordVerify()
 
-*/
 
 class UserManager extends Manager
 {

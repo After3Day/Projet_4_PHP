@@ -7,7 +7,7 @@ class UserSession
     {
 		if(!isset($_SESSION['userSession'])) {
 			$_SESSION['userSession']['pseudo'] = null;
-			$_SESSION['userSession']['role'] = null;
+			$_SESSION['userSession']['role'] = 'visiteur';
 		}
 		$this->hydrate($_SESSION['userSession']);
 	}
@@ -21,7 +21,18 @@ class UserSession
 
     public function isLogged()
     {
-        if($_SESSION['userSession']['role'] != '')
+        if($_SESSION['userSession']['role'] === 'visiteur')
+        {
+            return false;
+        } else {
+            return true;
+        }
+    }
+
+    public function hasNotRole($role)
+    {
+
+        if($role != $this->getRole())
         {
             return true;
         } else {
@@ -31,9 +42,8 @@ class UserSession
 
     public function hasRole($role)
     {
-        $role = $_SESSION['userSession']['role'];
 
-        if($role != 'admin')
+        if($role != $this->getRole())
         {
             return false;
         } else {

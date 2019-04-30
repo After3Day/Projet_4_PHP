@@ -4,33 +4,22 @@ class PostController extends View
 {
 	
 	public function editArticle($request) {
-		
-		$role = $this->userSession->getRole();
-		
-		if($role === 'admin'){
 
-			$id = $request->get('id');
-			$manager = new PostManager();
-			$article = $manager->findPost($id);
+		
+		if($this->userSession->hasNotRole('admin')) $this->redirect(); // verif pas le role;
+
+		$id = $request->get('id');
+		$manager = new PostManager();
+		$article = $manager->findPost($id);
 				
-			$this->render('edit');
-		} else {
-			echo '403';	
-		}
+		$this->render('edit');
 	}
 
 	public function createArticle() {
 
-		$role = $this->userSession->getRole();
-
-		if($role === 'admin')
-		{
-
-			$this->render('edit');
-				
-		} else {
-			echo '403';	
-		} 
+		if($this->userSession->hasNotRole('admin'))  $this->redirect();
+		
+		$this->render('edit');
 
 	}
 	
