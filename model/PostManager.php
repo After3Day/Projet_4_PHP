@@ -1,37 +1,35 @@
 <?php
 
-class PostManager
+class PostManager extends Manager
 {
 
-	private $dbh;
 
-
-	public function __construct()
-	{
-		$this->dbh = new PDO("mysql:host=".DB_HOST."; dbname=".DB_NAME.";", DB_USERNAME, DB_PASSWORD);
+	public function __construct() {
+		parent::__construct();
+		// modif
 	}
 
+	// hydrate
+	public function getEntityName()
+	{
+		return "PostManager";
+	}
 
 	public function findLastPost()
 	{
-		$dbh = $this->dbh;;
+		$dbh = $this->dbh;
 
-		$query = "SELECT * FROM posts ORDER BY created_at DESC LIMIT 0, 1";
+		$query = "SELECT * FROM posts 
+						ORDER BY createdAt 
+						DESC LIMIT 0, 1";
 
 		$req  = $dbh->prepare($query);
 		$req->execute();
 
-		while ($row = $req->fetch(PDO::FETCH_ASSOC)) {
+		$row = $req->fetch(PDO::FETCH_ASSOC);
 
-			$LastPost = new Post();
+		$LastPost = new Post($row);
 
-			$LastPost->setId($row['id']);
-			$LastPost->setName($row['name']);
-			$LastPost->setContent($row['content']);
-			$LastPost->setAuthor($row['author']);
-			$LastPost->setCreatedAt($row['created_at']);
-			
-		};
 
 		return $LastPost;
 
@@ -39,7 +37,7 @@ class PostManager
 
 	public function findPosts()
 	{
-		$dbh = $this->dbh;;
+		$dbh = $this->dbh;
 
 		$query = "SELECT * FROM posts";
 
@@ -50,15 +48,33 @@ class PostManager
 
 			$post = new Post();
 
-			$post->setId($row['id']);
-			$post->setName($row['name']);
-			$post->setContent($row['content']);
-			$post->setAuthor($row['author']);
-			$post->setCreatedAt($row['created_at']);
+			$post->hydrate($row);
 			
 			$Posts[] = $post;
 		};
 
 		return $Posts;
 	}
+
+	public function findPost($id)
+	{
+		$dbh = $this->dbh;
+
+		$query = "SELECT * FROM posts
+					WHERE id = :id";
+
+		$req  = $dbh->prepare($query);
+		$req->bindParam(':id', $id , PDO::PARAM_INT);
+		$req->execute();
+
+		$row = $req->fetch(PDO::FETCH_ASSOC);
+
+		$SPost = new Post($row);
+
+		
+
+		return $SPost;
+	}
+
+
 }

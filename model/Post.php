@@ -8,6 +8,26 @@ class Post
 	private $author;
 	private $createdAt;
 
+    public function __construct($data = null)
+    {
+        if($data)
+        {
+            $this->hydrate($data);
+        }
+    }
+
+    public function hydrate(array $data)
+    {
+        foreach ($data as $key => $value)
+        {
+            $method = 'set'.ucfirst($key);
+
+            if(method_exists($this, $method))
+            {
+                $this->$method($value);
+            }
+        }
+    }
     /**
      * @return mixed
      */
@@ -89,11 +109,14 @@ class Post
     }
 
     /**
-     * @return mixed
+     * @return DateTime
      */
     public function getCreatedAt()
     {
-        return $this->createdAt;
+        $date = new DateTime($this->createdAt);
+        return $date;
+        // $this->createdAt
+        // passer la date JJ/MM/AAAA
     }
 
     /**

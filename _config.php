@@ -9,6 +9,8 @@ class MyAutoload
 	{
 		spl_autoload_register(array(__CLASS__, 'autoload'));
 
+		session_start();
+
 		$root = $_SERVER['DOCUMENT_ROOT'];
 		$host = $_SERVER['HTTP_HOST'];
 
@@ -24,9 +26,9 @@ class MyAutoload
 		define('ASSETS', HOST.'assets/');
 
 		define('DB_HOST', 'localhost');
-		define('DB_NAME', 'Blog_JF');
+		define('DB_NAME', 'blog_jf');
 		define('DB_USERNAME', 'root');
-		define('DB_PASSWORD', '');
+		define('DB_PASSWORD', 'PASSWORD');
 
 	}
 

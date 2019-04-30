@@ -8,7 +8,7 @@
     </head>
 
 <body>
-    <header>
+    <header id="navbar">
         <div id="Logo">
             <img src="<?php echo ASSETS;?>images/horse-logo2a.jpg">
             <span>Billet simple pour l'Alaska</span>
@@ -17,25 +17,34 @@
                 <nav class="Menu">
                     <a class="LienMenu" href="<?php echo HOST;?>home">Accueil</a>
                     <span  class="SepMenu">|</span>
-                    <a class="LienMenu" href="<?php echo HOST;?>posts">Mes Articles</a>
+                    <a class="LienMenu" href="<?php echo HOST;?>posts">Mes&nbsp;Articles</a>
                     <span class="SepMenu">|</span>
-                    <a class="LienMenu" href="<?php echo HOST;?>login">Connexion</a>
+                    <?php if(!$userSession->isLogged()):?>
+                        <a class="LienMenu" href="<?php echo HOST;?>loginForm">Connexion</a>
+                        <span class="SepMenu">|</span>
+                        <a class="LienMenu" href="<?php echo HOST;?>registerForm">Inscription</a>
+                    <?php else :?>
+                        <?php if($userSession->hasRole('admin')):?>
+                            <a class="LienMenu" href="<?php echo HOST;?>create">Nouveaux</a>
+                            <span class="SepMenu">|</span>
+                        <?php endif;?>
+                        <a class="LienMenu" href="<?php echo HOST;?>logout">Déconnexion</a>
+                    <?php endif;?>
                 </nav>
             </div>
     </header>
-
-    <div class="Separateur"> </div>
-
+    <section  id="Content">
 
     <!-- Insert contentPage -->
     <?php echo $contentPage;?>
 
+    </section>
 
-    <div class="Separateur" id="Separateur2">  </div>
-
-    <footer>
+    <footer id ="footer">
         <div>Copyright © 2019 Erwan Pasche</div>
+        <script src="https://cloud.tinymce.com/5/tinymce.min.js"></script>
+        <script>tinymce.init({selector:'textarea'});</script>
     </footer>
 </body>
-
+    
 </html>

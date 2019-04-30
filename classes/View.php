@@ -2,19 +2,27 @@
 
 class View
 {
+	
+	protected $userSession;
 	private $template;
 
-	public function __construct($template)
+	public function __construct()
 	{
-		$this->template = $template;
+		$this->userSession = new UserSession();
 	}
 
-	public  function render($params = array())
+	public function setTemplate($template)
+    {
+        $this->template = $template;
+
+        return $this;
+    }
+
+	public function render($template, $params = array())
 	{
-        
 		extract($params);
 
-		$template = $this->template;
+		$userSession = $this->userSession;
 
 		ob_start();
 		include_once(VIEW.$template.'.php');
@@ -23,4 +31,27 @@ class View
 		include_once(VIEW.'_gabarit.php');
 
 	}
+
+	public function redirect($route)
+    {
+        header("Location: ".HOST.$route);
+        exit;
+    }
+
+
+
+    /**
+     * @return mixed
+     */
+    public function getTemplate()
+    {
+        return $this->template;
+    }
+
+    /**
+     * @param mixed $template
+     *
+     * @return self
+     */
+
 }
