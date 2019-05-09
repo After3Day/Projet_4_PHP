@@ -50,4 +50,9 @@ class Home extends View
 		$this->render('login');
 	}
 
+	public function showEditForm()
+	{
+		$this->render('edit');
+	}
+
 }

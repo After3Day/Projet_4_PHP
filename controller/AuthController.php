@@ -5,12 +5,12 @@ class AuthController extends View
 	
 	public function signin($request)
 	{
-		
-		//if(!$request->hasArea('admin')) $this->redirecti('403');
-
 		$manager = new UserManager();
 
-		$manager->login($_POST['pseudo'], $_POST['password']);
+		$pseudo = $request->get('pseudo');
+		$password = $request->get('password');
+
+		$manager->login($pseudo, $password);
 	}
 
 	public function signout()
@@ -19,7 +19,7 @@ class AuthController extends View
 		header('Location:index');
 	}
 
-	public function IsValid()
+	public function IsValid($request)
 	{
 		$manager = new UserManager();
 

@@ -71,10 +71,55 @@ class PostManager extends Manager
 
 		$SPost = new Post($row);
 
-		
 
 		return $SPost;
 	}
 
+	public function newPost($request)
+	{
+		$dbh = $this->dbh;
+
+		$query = "INSERT INTO posts(name, content, author, createdAt)
+					VALUES(:name, :content, :author, NOW())";
+
+		$req = $dbh->prepare($query);
+
+		$req->execute(array(
+			'name' => $request['title'],
+			'content' => $request['content'],
+			'author' => $request['author'],
+			));
+	}
+
+	public function updatePost($id, $title, $content, $author)
+	{
+		$dbh = $this->dbh;
+
+		$query = "UPDATE posts
+					SET 'name' = :name, 'content' = :content, 'author' = :author)
+					WHERE 'id' = :id";
+
+
+		$req = $dbh->prepare($query);
+		$req->bindParam(':id', $id , PDO::PARAM_INT);
+		$req->bindParam(':name', $title , PDO::PARAM_STR);
+		$req->bindParam(':content', $content);
+		$req->bindParam(':author', $author , PDO::PARAM_STR);
+		$req->execute();
+
+	}
+
+	public function deletePost($id)
+	{
+		$dbh = $this->dbh;
+
+		$query = "DELETE FROM posts
+					WHERE 'id' = $id";
+		$req = $dbh->prepare($query);
+		
+		$req->execute();
+
+
+	}
 
 }

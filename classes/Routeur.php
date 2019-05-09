@@ -10,11 +10,14 @@ class Routeur
             "post"          => ["controller" => 'Home',             "method" => 'showPost',         "area" => ''],
             "loginForm"     => ["controller" => 'Home',             "method" => 'showLogin',        "area" => ''],
             "registerForm"  => ["controller" => 'Home',             "method" => 'showRegistration', "area" => ''],
+            "new"           => ["controller" => 'Home',             "method" => 'showEditForm',     "area" => ''],
             "register"      => ["controller" => 'AuthController',   "method" => 'isValid',          "area" => ''],
             "connexion.php" => ["controller" => 'AuthController',   "method" => 'signin',           "area" => ''],
             "logout"        => ["controller" => 'AuthController',   "method" => 'signout',          "area" => ''],
             "create"        => ["controller" => 'PostController',   "method" => 'createArticle',    "area" => 'admin'],
-            "edit"          => ["controller" => 'PostController',   "method" => 'editArticle',      "area" => 'admin']
+            "edit"          => ["controller" => 'PostController',   "method" => 'editArticle',      "area" => 'admin'],
+            "update"        => ["controller" => 'PostController',   "method" => 'updateArticle',    "area" => 'admin'],
+            "delete"        => ["controller" => 'PostController',   "method" => 'deleteArticle',    "area" => 'admin']
     ];
 
     public function __construct($url)

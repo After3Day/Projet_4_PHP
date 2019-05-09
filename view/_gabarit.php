@@ -25,7 +25,7 @@
                         <a class="LienMenu" href="<?php echo HOST;?>registerForm">Inscription</a>
                     <?php else :?>
                         <?php if($userSession->hasRole('admin')):?>
-                            <a class="LienMenu" href="<?php echo HOST;?>create">Nouveaux</a>
+                            <a class="LienMenu" href="<?php echo HOST;?>new">Nouveaux</a>
                             <span class="SepMenu">|</span>
                         <?php endif;?>
                         <a class="LienMenu" href="<?php echo HOST;?>logout">Déconnexion</a>
