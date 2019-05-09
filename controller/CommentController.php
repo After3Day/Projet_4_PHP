@@ -15,7 +15,8 @@ class CommentController extends View {
 	{
 		if($this->userSession->hasNotRole('user'))  $this->redirect();
 
-
+		$manager = new CommentManager();
+		$comment = $manager->newComment();
 	}
 
 	public function deleteComment($request)

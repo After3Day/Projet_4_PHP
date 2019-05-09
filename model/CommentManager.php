@@ -12,7 +12,7 @@ class CommmentManager extends Manager {
 					WHERE id = :id";
 
 		$req  = $dbh->prepare($query);
-		$req->bindParam(':id', $postId , PDO::PARAM_INT);
+		$req->bindParam('id', $postId , PDO::PARAM_INT);
 		$req->execute();
 
 		$row = $req->fetch(PDO::FETCH_ASSOC);

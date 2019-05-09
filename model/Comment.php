@@ -20,7 +20,7 @@ class Comment {
                 $this->$method($value);
             }
         }
-    }	
+    }
 
     /**
      * @return mixed

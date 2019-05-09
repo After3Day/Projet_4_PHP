@@ -64,7 +64,7 @@ class PostManager extends Manager
 					WHERE id = :id";
 
 		$req  = $dbh->prepare($query);
-		$req->bindParam(':id', $id , PDO::PARAM_INT);
+		$req->bindParam('id', $id , PDO::PARAM_INT);
 		$req->execute();
 
 		$row = $req->fetch(PDO::FETCH_ASSOC);
@@ -96,15 +96,14 @@ class PostManager extends Manager
 		$dbh = $this->dbh;
 
 		$query = "UPDATE posts
-					SET 'name' = :name, 'content' = :content, 'author' = :author)
-					WHERE 'id' = :id";
-
+					SET name = :name, content = :content, author = :author
+					WHERE id = :id";
 
 		$req = $dbh->prepare($query);
-		$req->bindParam(':id', $id , PDO::PARAM_INT);
-		$req->bindParam(':name', $title , PDO::PARAM_STR);
-		$req->bindParam(':content', $content);
-		$req->bindParam(':author', $author , PDO::PARAM_STR);
+		$req->bindParam('id', $id , PDO::PARAM_INT);
+		$req->bindParam('name', $title , PDO::PARAM_STR);
+		$req->bindParam('content', $content, PDO::PARAM_STR);
+		$req->bindParam('author', $author , PDO::PARAM_STR);
 		$req->execute();
 
 	}
@@ -114,11 +113,10 @@ class PostManager extends Manager
 		$dbh = $this->dbh;
 
 		$query = "DELETE FROM posts
-					WHERE 'id' = $id";
+					WHERE id = :id";
 		$req = $dbh->prepare($query);
-		
+		$req->bindParam('id', $id , PDO::PARAM_INT);
 		$req->execute();
-
 
 	}
 
