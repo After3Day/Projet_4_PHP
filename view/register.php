@@ -1,5 +1,5 @@
 <div id="login">
-	<form method="post" action="<?php echo htmlentities($_SERVER['PHP_SELF']); ?>" enctype="multipart/form-data">
+	<form method="post" action="register" enctype="multipart/form-data">
 		<fieldset>
 			<legend> Formulaire d'incription </legend>
 			<label for="pseudo">Pseudo :</label><input name="pseudo" type="text" id="pseudo" /> <br />

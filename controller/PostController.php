@@ -18,10 +18,14 @@ class PostController extends View
 
 		if($this->userSession->hasNotRole('admin'))  $this->redirect();
 
+		$name = $request->get('title');
+		$content = $request->get('content');
+		$author = $request->get('author');
+
 		$manager = new PostManager();
-		$manager->newPost($_POST);
+		$manager->newPost($name, $content, $author);
 		
-		$this->render('index');
+		$this->redirect('index');
 
 	}
 

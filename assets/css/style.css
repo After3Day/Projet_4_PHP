@@ -104,6 +104,12 @@
 	padding: 1%;
 }
 
+.commentForm {
+	width: 60%;
+	margin-bottom: 1em;
+	padding: 1%;
+}
+
 h2 {
 	margin-top: 2%;
 	text-align: center;

@@ -14,7 +14,7 @@ class Routeur
             "register"      => ["controller" => 'AuthController',   "method" => 'isValid',          "area" => ''],
             "connexion.php" => ["controller" => 'AuthController',   "method" => 'signin',           "area" => ''],
             "logout"        => ["controller" => 'AuthController',   "method" => 'signout',          "area" => ''],
-            "comment"       => ["controller" => 'PostController',   "method" => 'createComment',    "area" => 'admin'],
+            "comment"       => ["controller" => 'CommentController',"method" => 'createComment',    "area" => ''],
             "create"        => ["controller" => 'PostController',   "method" => 'createArticle',    "area" => 'admin'],
             "edit"          => ["controller" => 'PostController',   "method" => 'editArticle',      "area" => 'admin'],
             "update"        => ["controller" => 'PostController',   "method" => 'updateArticle',    "area" => 'admin'],

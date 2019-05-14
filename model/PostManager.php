@@ -75,7 +75,7 @@ class PostManager extends Manager
 		return $SPost;
 	}
 
-	public function newPost($request)
+	public function newPost($name, $content, $author)
 	{
 		$dbh = $this->dbh;
 
@@ -84,11 +84,11 @@ class PostManager extends Manager
 
 		$req = $dbh->prepare($query);
 
-		$req->execute(array(
-			'name' => $request['title'],
-			'content' => $request['content'],
-			'author' => $request['author'],
-			));
+		$req->bindParam('name', $name);
+		$req->bindParam('content', $content);
+		$req->bindParam('author', $author);
+
+		$req->execute();
 	}
 
 	public function updatePost($id, $title, $content, $author)

@@ -41,7 +41,7 @@ class UserManager extends Manager
 					WHERE pseudo = :pseudo";
 		
 		$req = $dbh->prepare($query);
-		$req->bindParam(':pseudo', $pseudo, PDO::PARAM_STR);
+		$req->bindParam('pseudo', $pseudo, PDO::PARAM_STR);
 		$req->execute();
 
 		$data = $req->fetch(PDO::FETCH_ASSOC);

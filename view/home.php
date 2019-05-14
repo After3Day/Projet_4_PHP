@@ -7,7 +7,7 @@
 			<br />
 			<span class="AuthorName"><?php echo $LastPost->getAuthor();?>,</span>
 			<span class="CreatedAt"><?php echo $LastPost->getCreatedAt()->format('d/m/Y');?></span>
-			<a href="<?php echo HOST.'post/id/'.$LastPost->getId()?>">Test</a>	
+			<a href="<?php echo HOST.'post/id/'.$LastPost->getId();?>">Test</a>	
 		</div>
 </div>
     
