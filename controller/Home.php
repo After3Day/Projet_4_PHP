@@ -32,12 +32,18 @@ class Home extends View
 		$this->render('post', array('SPost' => $SPost));
 	
 	}
-	/*
-	public function showComments()
+	
+	public function showComments($request)
 	{
-		Afficher tous les commentaires relatifs à un post.
+		$postId = $request->get('id');
+		echo $postId;
+
+		$manager = new CommentManager();
+		$Comments = $manager->getComments($postId);
+
+		$this->render('comments', array('Comments' => $Comments));
 	}
-*/
+
 	public function showRegistration()
 	{
 		$this->render('register');

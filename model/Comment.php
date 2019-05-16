@@ -127,7 +127,8 @@ class Comment {
      */
     public function getCreatedAt()
     {
-        return $this->createdAt;
+        $date = new DateTime($this->createdAt);
+        return $date;
     }
 
     /**
