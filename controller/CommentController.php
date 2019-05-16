@@ -7,8 +7,14 @@ class CommentController extends View {
 		if($this->userSession->hasNotRole('admin'))  $this->redirect();
 
 		$id = $request->get('id');
+		$content = $request->get('content');
+		//$postId = $request->get('id');
 
-		//new Manager		
+		$manager = new CommentManager();
+		$manager->updateComment($id, $content);
+
+		//$this->redirect('post/id/'.''.$postId);
+		
 	}
 
 	public function createComment($request)
@@ -32,7 +38,10 @@ class CommentController extends View {
 
 		$id = $request->get('id');
 
-		//new Manager
+		$manager = new CommentManager();
+		$manager->deleteComment($id);		
+
+		//$this->redirect('post/id/'.''.$postId);
 	}
 
 	public function reportComment($request)
@@ -40,8 +49,9 @@ class CommentController extends View {
 		if($this->userSession->hasNotRole('user'))  $this->redirect();
 
 		$id = $request->get('id');
+		$rating = $request->get('rating');
 
-		//new Manager		
+		//$this->redirect('post/id/'.''.$postId);		
 	}
 
 }

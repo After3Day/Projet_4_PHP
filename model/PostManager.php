@@ -39,7 +39,9 @@ class PostManager extends Manager
 	{
 		$dbh = $this->dbh;
 
-		$query = "SELECT * FROM posts";
+		$query = "SELECT * FROM posts
+					ORDER BY createdAt 
+					DESC";
 
 		$req  = $dbh->prepare($query);
 		$req->execute();

@@ -3,22 +3,29 @@
 class CommentManager extends Manager {
 
 
-	public function getComment($postId) {
-
+	public function getComments($postId)
+	{
 		$dbh = $this->dbh;
 
 		$query = "SELECT * FROM comments
-					WHERE postId = :id";
+					WHERE postId = :postId
+					ORDER BY createdAt 
+					DESC";
 
 		$req  = $dbh->prepare($query);
-		$req->bindParam('id', $postId , PDO::PARAM_INT);
+		$req->bindParam('postId', $postId , PDO::PARAM_INT);
 		$req->execute();
 
-		$row = $req->fetch(PDO::FETCH_ASSOC);
+		while ($row = $req->fetch(PDO::FETCH_ASSOC)) {
 
-		$Comment = new Comment($row);
+			$Comment = new Comment();
 
-		return $Comment;
+			$Comment->hydrate($row);
+			
+			$Comments[] = $Comment;
+		};
+
+		return $Comments;
 
 	}
 
@@ -38,6 +45,48 @@ class CommentManager extends Manager {
 		$req->execute();
 
 	}
+
+	public function updateComment($id, $content)
+	{
+		$dbh = $this->dbh;
+
+		$query = "UPDATE comments
+					SET content = :content
+					WHERE id = :id";
+
+		$req = $dbh->prepare($query);
+		$req->bindParam('id', $id , PDO::PARAM_INT);
+		$req->bindParam('content', $content, PDO::PARAM_STR);
+		$req->execute();
+	}
+
+	public function deleteComment($id)
+	{
+		$dbh = $this->dbh;
+
+		$query = "DELETE FROM comments
+					WHERE id = :id";
+		$req = $dbh->prepare($query);
+		$req->bindParam('id', $id , PDO::PARAM_INT);
+		$req->execute();		
+	}
+
+	public function reportCommment($id, $rating)
+	{
+		$dbh = $this->dbh;
+
+		$newRating = $rating++;
+
+		$query = "UPDATE comments
+					SET rating = :rating
+					WHERE id = :id";
+
+		$req = $dbh->prepare($query);
+		$req->bindParam('id', $id , PDO::PARAM_INT);
+		$req->bindParam('rating', $newRating, PDO::PARAM_INT);
+		$req->execute();
+	}
+
 
 	public function getEntityName(){}
 	
