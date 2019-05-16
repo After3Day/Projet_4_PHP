@@ -11,6 +11,7 @@
 			<a href="<?php echo HOST.'edit/id/'.$post->getId()?>">Éditer</a>
 			<a href="<?php echo HOST.'delete/id/'.$post->getId()?>">Supprimer</a>
 			<a href="<?php echo HOST.'comment/id/'.$post->getId()?>">Commenter</a>
+			<a href="<?php echo HOST.'showComment/id/'.$post->getId()?>">Voir les commentaires</a>
 		</div>
 	<?php endforeach;?>
 	<!--<?php //foreach ($Comments as $comment):?>

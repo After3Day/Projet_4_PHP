@@ -27,8 +27,9 @@ class CommentController extends View {
 
 		$manager = new CommentManager();
 		$manager->newComment($pseudo, $content, $postId);
+		$Comments = $manager->getComments($postId);
 
-		//$this->render('comment', array('Comment' => $Posts));
+		$this->render('', array('Comments' => $Comments));
 		$this->redirect('post/id/'.''.$postId);
 	}
 
