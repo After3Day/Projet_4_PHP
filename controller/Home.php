@@ -29,7 +29,10 @@ class Home extends View
 		$manager = new PostManager();
 		$SPost = $manager->findPost($id);
 
-		$this->render('post', array('SPost' => $SPost));
+		$manager2 = new CommentManager();
+		$Comments = $manager2->getComments($id);
+
+		$this->render('post', array('SPost' => $SPost, 'Comments' => $Comments));
 	
 	}
 	

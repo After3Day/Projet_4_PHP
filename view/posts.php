@@ -10,17 +10,7 @@
 			<span class="CreatedAt"><?php echo $post->getCreatedAt()->format('d/m/Y');?></span>
 			<a href="<?php echo HOST.'edit/id/'.$post->getId()?>">Éditer</a>
 			<a href="<?php echo HOST.'delete/id/'.$post->getId()?>">Supprimer</a>
-			<a href="<?php echo HOST.'comment/id/'.$post->getId()?>">Commenter</a>
-			<a href="<?php echo HOST.'showComment/id/'.$post->getId()?>">Voir les commentaires</a>
+			<a href="<?php echo HOST.'comment/id/'.$post->getId()?>">Commenter</a>		
 		</div>
 	<?php endforeach;?>
-	<!--<?php //foreach ($Comments as $comment):?>
-		<div>
-			<span><?php// echo $comment->getPseudo();?></span>
-			<span><?php //echo $comment->getContent();?></span>
-			<span><?php //echo $comment->getDate();?></span>
-			<span><?php //echo $comment->getRating();?></span>
-			<span><?php //echo $comment->getId();?></span>
-		</div>
-	<?php //endforeach;?>-->
 </div>

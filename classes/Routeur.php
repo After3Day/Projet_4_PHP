@@ -18,8 +18,7 @@ class Routeur
             "create"        => ["controller" => 'PostController',   "method" => 'createArticle',    "area" => 'admin'],
             "edit"          => ["controller" => 'PostController',   "method" => 'editArticle',      "area" => 'admin'],
             "update"        => ["controller" => 'PostController',   "method" => 'updateArticle',    "area" => 'admin'],
-            "delete"        => ["controller" => 'PostController',   "method" => 'deleteArticle',    "area" => 'admin'],
-            "showComment"   => ["controller" => 'Home',             "method" => 'showComments',     "area" => '']
+            "delete"        => ["controller" => 'PostController',   "method" => 'deleteArticle',    "area" => 'admin']
     ];
 
     public function __construct($url)
