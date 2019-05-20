@@ -18,14 +18,35 @@ class CommentManager extends Manager {
 
 		while ($row = $req->fetch(PDO::FETCH_ASSOC)) {
 
-			$Comment = new Comment();
+			$comment = new Comment();
 
-			$Comment->hydrate($row);
+			$comment->hydrate($row);
 			
-			$Comments[] = $Comment;
+			$Comments[] = $comment;
 		};
 
 		return $Comments;
+
+	}
+
+		public function getComment($id)
+	{
+		$dbh = $this->dbh;
+
+		$query = "SELECT * FROM comments
+					WHERE id = :id";
+
+		$req  = $dbh->prepare($query);
+		$req->bindParam('id', $id , PDO::PARAM_INT);
+		$req->execute();
+
+		$row = $req->fetch(PDO::FETCH_ASSOC);
+
+		$CommentS = new Comment();
+
+		$CommentS->hydrate($row);
+
+		return $CommentS;
 
 	}
 
@@ -46,17 +67,19 @@ class CommentManager extends Manager {
 
 	}
 
-	public function updateComment($id, $content)
+	public function updateComment($id, $content, $postId, $pseudo)
 	{
 		$dbh = $this->dbh;
 
 		$query = "UPDATE comments
-					SET content = :content
+					SET content = :content, pseudo = :pseudo, postId = :postId
 					WHERE id = :id";
 
 		$req = $dbh->prepare($query);
 		$req->bindParam('id', $id , PDO::PARAM_INT);
 		$req->bindParam('content', $content, PDO::PARAM_STR);
+		$req->bindParam('pseudo', $pseudo, PDO::PARAM_STR);
+		$req->bindParam('postId', $postId, PDO::PARAM_INT);
 		$req->execute();
 	}
 
