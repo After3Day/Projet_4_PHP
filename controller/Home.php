@@ -39,7 +39,6 @@ class Home extends View
 	public function showComments($request)
 	{
 		$postId = $request->get('id');
-		echo $postId;
 
 		$manager = new CommentManager();
 		$Comments = $manager->getComments($postId);

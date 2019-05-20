@@ -1,6 +1,5 @@
 
-
-<div class="container">
+<div class="container2">
 
 	<div class="post">
 		<h3><?php echo $SPost->getName();?></h3>
@@ -31,6 +30,10 @@
 			<br />
 			<span class="AuthorName"><?php echo $comment->getPseudo();?>,</span>
 			<span class="CreatedAt"><?php echo $comment->getCreatedAt()->format('d/m/Y');?></span>
+			<?php if(($comment->getPseudo() === $userSession->getPseudo()) || $userSession->hasRole('admin')):?>
+			<a href="<?php echo HOST.'editCom/postId/'.$SPost->getId().'/id/'.$comment->getId();?>">Éditer</a>
+			<a href="<?php echo HOST.'deleteCom/postId/'.$SPost->getId().'/id/'.$comment->getId();?>">Supprimer</a>
+			<?php endif;?>
 		</div>
 	<?php endforeach;?>
 </div>
