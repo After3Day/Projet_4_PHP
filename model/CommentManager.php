@@ -94,20 +94,18 @@ class CommentManager extends Manager {
 		$req->execute();		
 	}
 
-	public function reportCommment($id, $rating)
+	public function reportCom($id)
 	{
 		$dbh = $this->dbh;
 
-		$newRating = $rating++;
-
 		$query = "UPDATE comments
-					SET rating = :rating
+					SET rating = rating-1
 					WHERE id = :id";
 
 		$req = $dbh->prepare($query);
 		$req->bindParam('id', $id , PDO::PARAM_INT);
-		$req->bindParam('rating', $newRating, PDO::PARAM_INT);
 		$req->execute();
+
 	}
 
 

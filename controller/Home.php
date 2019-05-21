@@ -63,4 +63,9 @@ class Home extends View
 		$this->render('edit');
 	}
 
+	public function showConnect()
+	{
+		$this->render('connected');
+	}
+
 }

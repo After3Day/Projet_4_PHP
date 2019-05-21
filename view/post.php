@@ -33,6 +33,9 @@
 			<?php if(($comment->getPseudo() === $userSession->getPseudo()) || $userSession->hasRole('admin')):?>
 			<a href="<?php echo HOST.'editCom/postId/'.$SPost->getId().'/id/'.$comment->getId();?>">Éditer</a>
 			<a href="<?php echo HOST.'deleteCom/postId/'.$SPost->getId().'/id/'.$comment->getId();?>">Supprimer</a>
+				<?php if($userSession->isLogged()):?>
+				<a href="<?php echo HOST.'report/postId/'.$SPost->getId().'/id/'.$comment->getId();?>">Reporter </a><?php echo $comment->getRating();?>
+				<?php endif;?>	
 			<?php endif;?>
 		</div>
 	<?php endforeach;?>
