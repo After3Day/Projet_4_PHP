@@ -19,7 +19,7 @@ class AuthController extends View
 			$userSession->setRole($user->getRole());
 			$this->redirect('home');
 		}
-		$user->setErrors('Mot de passe ou pseudo incorrect !');
+		$user->setErrorsPseudo('Mot de passe ou pseudo incorrect !');
 		$this->render('login', array('user' => $user));
 	}
 

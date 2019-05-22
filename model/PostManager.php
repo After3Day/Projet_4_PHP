@@ -53,6 +53,7 @@ class PostManager extends Manager
 			$post->hydrate($row);
 			
 			$Posts[] = $post;
+
 		};
 
 		return $Posts;

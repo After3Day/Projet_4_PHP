@@ -21,7 +21,7 @@ class PostController extends View
 
 		$name = $request->get('title');
 		$content = $request->get('content');
-		$author = $request->get('author');
+		$author = $this->userSession->getPseudo();
 
 		$manager = new PostManager();
 		$manager->newPost($name, $content, $author);
@@ -37,7 +37,7 @@ class PostController extends View
 		$id = $request->get('id');
 		$title = $request->get('title');
 		$content = $request->get('content');
-		$author = $request->get('author');
+		$author = $this->userSession->getPseudo();
 
 		$manager = new PostManager();
 

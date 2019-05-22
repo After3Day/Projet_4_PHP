@@ -1,6 +1,6 @@
 <?php if(isset($user)){
 	$pseudo = $user->getPseudo();
-	$errors = $user->getErrors();
+	$errors = $user->getErrorsPseudo();
 } else {
 	$pseudo = '';
 	$errors = '';

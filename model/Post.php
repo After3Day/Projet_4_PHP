@@ -28,6 +28,7 @@ class Post
             }
         }
     }
+
     /**
      * @return mixed
      */
