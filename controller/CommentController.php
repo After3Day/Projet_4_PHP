@@ -2,6 +2,8 @@
 
 class CommentController extends View {
 
+	private $ratingMin;
+
 	public function editComment($request)
 	{
 		if($this->userSession->hasNotRole('user'))  $this->redirect();
@@ -20,7 +22,7 @@ class CommentController extends View {
 
 	public function updateCom($request)
 	{
-		if($this->userSession->hasNotRole('user'))  $this->redirect();
+		if($this->userSession->hasNotRole('user'))  $this->redirect('connect');
 
 		$id = $request->get('id');
 		$postId = $request->get('postId');
@@ -35,7 +37,7 @@ class CommentController extends View {
 
 	public function createComment($request)
 	{
-		if($this->userSession->hasNotRole('user'))  $this->redirect();
+		if(!$this->userSession->isLogged())  $this->redirect('connect');
 
 		$pseudo = $this->userSession->getPseudo();
 		$content = $request->get('content2');
@@ -51,7 +53,7 @@ class CommentController extends View {
 
 	public function deleteComment($request)
 	{
-		if($this->userSession->hasNotRole('user'))  $this->redirect();
+		if($this->userSession->hasNotRole('user'))  $this->redirect('connect');
 
 		$id = $request->get('id');
 		$postId = $request->get('postId');
@@ -67,14 +69,26 @@ class CommentController extends View {
 		$this->redirect('post/id/'.''.$postId);
 	}
 
-	public function reportComment($request)
+	public function reportCom($request)
 	{
-		if($this->userSession->hasNotRole('user'))  $this->redirect();
+		if(!$this->userSession->isLogged())  $this->redirect('connect');
 
 		$id = $request->get('id');
-		$rating = $request->get('rating');
+		$postId = $request->get('postId');
 
-		//$this->redirect('post/id/'.''.$postId);		
+		$manager = new CommentManager();
+		$manager->reportCom($id);
+		$CommentS = $manager->getComment($id);
+		
+		if($CommentS->getRating() > -5)
+		{
+			
+			$this->redirect('post/id/'.''.$postId);
+		} else
+		{
+			$manager->deleteComment($id);
+			$this->redirect('post/id/'.''.$postId);
+		}		
 	}
 
 }

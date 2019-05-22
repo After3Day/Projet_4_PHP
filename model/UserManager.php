@@ -12,8 +12,8 @@ class UserManager extends Manager
 
 		$password = password_hash($values['password'], PASSWORD_DEFAULT);
 
-		$query = "INSERT INTO users(name, surname, pseudo, email, password, role, birthday) 
-					VALUES(:name, :surname, :pseudo, :email, :password, :role, :birthday)";
+		$query = "INSERT INTO users(name, surname, pseudo, email, password, role) 
+					VALUES(:name, :surname, :pseudo, :email, :password, :role)";
 					
 		$req  = $dbh->prepare($query);
 
@@ -23,11 +23,8 @@ class UserManager extends Manager
 			'pseudo' => $values['pseudo'],
 			'email' => $values['email'],
 			'password' => $password,
-			'role' => $values['role'],
-			'birthday' => $values['birthday']
+			'role' => 'user',
 			));
-
-		//verify($values);
 
 		header('Location:index.php');
 	}
@@ -48,35 +45,42 @@ class UserManager extends Manager
 
 		$user = new User();
 
-		$user->hydrate($data);
+		if($data != ''){
 
-		if(password_verify($password, $user->getPassword())) {
-			$userSession = new UserSession();
-			$userSession->setPseudo($pseudo);
-			$userSession->setRole($user->getRole());
+			$user->hydrate($data);
 		}
-		header('Location:index');
+
+		return $user;
+
+			
 	}
 
-	/*public function verify($values) {
+	public function verify($pseudo, $email) {
 
-		$errors = array();
+		$dbh = $this->dbh;
 
-		$pseudo 	= $values['pseudo'];
-		$name 		= $values['name'];
-		$surname 	= $values['surname'];
-		$email 		= $values['email'];
-		$birthday 	= $values['birthday'];
+		$query = "SELECT *
+					FROM users 
+					WHERE pseudo = :pseudo
+					OR email = :email";
+		
+		$req = $dbh->prepare($query);
+		$req->bindParam('pseudo', $pseudo, PDO::PARAM_STR);
+		$req->bindParam('email', $email, PDO::PARAM_STR);
+		$req->execute();
 
-
-		if(isset($values)) {
-			if (empty($pseudo)) {
-				# code...
-			} else if (!preg_match("/^[a-zA-Z]*$/",$pseudo)) {
-				$errors['name'] = 'Le nom ne peut contenir que des lettres.'
-			}
+		$data = $req->fetch(PDO::FETCH_ASSOC);
+		
+		$user = new User();
+		
+		if($data != '') {
+			$user->hydrate($data);
+			if($user->getPseudo() === $pseudo) $user->setErrorsPseudo("Le pseudo déjà utilisé.");
+			if($user->getEmail() === $email) $user->setErrorsMail("L'email déjà utilisé");
 		}
-	}*/
+
+		return $user;
+	}
 
 	public function getEntityName(){}
 }

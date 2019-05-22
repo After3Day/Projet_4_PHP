@@ -14,6 +14,13 @@ class Home extends View
 		
 	}
 
+	public function showTest()
+	{
+
+		$this->render('test');
+		
+	}
+
 	public function showPosts()
 	{
 		$manager = new PostManager();
@@ -61,6 +68,11 @@ class Home extends View
 	public function showEditForm()
 	{
 		$this->render('edit');
+	}
+
+	public function showConnect()
+	{
+		$this->render('connected');
 	}
 
 }
