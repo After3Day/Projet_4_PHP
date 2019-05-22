@@ -11,6 +11,8 @@ class User {
 	private $password;
 	private $role;
 	private $birthday;
+    private $errorsPseudo;
+    private $errorsMail;
 
     public function hydrate(array $data)
     {
@@ -166,22 +168,43 @@ class User {
         return $this;
     }
 
+
     /**
      * @return mixed
      */
-    public function getBirthday()
+    public function getErrorsPseudo()
     {
-        return $this->birthday;
+        return $this->errorsPseudo;
     }
 
     /**
-     * @param mixed $birthday
+     * @param mixed $errorsPseudo
      *
      * @return self
      */
-    public function setBirthday($birthday)
+    public function setErrorsPseudo($errorsPseudo)
     {
-        $this->birthday = $birthday;
+        $this->errorsPseudo = $errorsPseudo;
+
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getErrorsMail()
+    {
+        return $this->errorsMail;
+    }
+
+    /**
+     * @param mixed $errorsMail
+     *
+     * @return self
+     */
+    public function setErrorsMail($errorsMail)
+    {
+        $this->errorsMail = $errorsMail;
 
         return $this;
     }

@@ -14,6 +14,13 @@ class Home extends View
 		
 	}
 
+	public function showTest()
+	{
+
+		$this->render('test');
+		
+	}
+
 	public function showPosts()
 	{
 		$manager = new PostManager();
