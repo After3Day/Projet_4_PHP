@@ -9,8 +9,7 @@ class CommentManager extends Manager {
 
 		$query = "SELECT * FROM comments
 					WHERE postId = :postId
-					ORDER BY createdAt 
-					DESC";
+					ORDER BY rating ASC, createdAt ASC";
 
 		$req  = $dbh->prepare($query);
 		$req->bindParam('postId', $postId , PDO::PARAM_INT);

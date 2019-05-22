@@ -11,7 +11,7 @@
 				<div class="post">
 					<a href="<?php echo HOST.'post/id/'.$post->getId()?>"><h3><?php echo $post->getName();?></h3></a>
 					<br />
-					<div class="PostContent"><?php echo $post->getContent();?></div>
+					<div class="PostContent"><?php echo substr($post->getContent(), 0, 1000);?>...<a href="<?php echo HOST.'post/id/'.$post->getId()?>">Suite</a></div>
 					<br />
 					<span class="AuthorName"><?php echo $post->getAuthor();?>,</span>
 					<span class="CreatedAt"><?php echo $post->getCreatedAt()->format('d/m/Y');?></span>

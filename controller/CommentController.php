@@ -2,11 +2,10 @@
 
 class CommentController extends View {
 
-	private $ratingMin;
 
 	public function editComment($request)
 	{
-		if($this->userSession->hasNotRole('user'))  $this->redirect();
+		if($this->userSession->hasNotRole('user') && $this->userSession->hasNotRole('admin'))  $this->redirect('home');
 
 		$id = $request->get('id');
 		$postId = $request->get('postId');
@@ -15,7 +14,7 @@ class CommentController extends View {
 		$CommentS = $manager->getComment($id);
 		$pseudo = $this->userSession->getPseudo();
 
-		if($pseudo != $CommentS->getPseudo()) $this->redirect('home');
+		if($pseudo != $CommentS->getPseudo() && $this->userSession->hasNotRole('admin')) $this->redirect('posts');
 
 		$this->render('editCom', array('CommentS' => $CommentS));
 	}
@@ -53,7 +52,7 @@ class CommentController extends View {
 
 	public function deleteComment($request)
 	{
-		if($this->userSession->hasNotRole('user'))  $this->redirect('connect');
+		if(!$this->userSession->isLogged())  $this->redirect('connect');
 
 		$id = $request->get('id');
 		$postId = $request->get('postId');
@@ -62,7 +61,7 @@ class CommentController extends View {
 		$CommentS = $manager->getComment($id);
 		$pseudo = $this->userSession->getPseudo();
 
-		if($pseudo != $CommentS->getPseudo()) $this->redirect('home');
+		if($pseudo != $CommentS->getPseudo() && $this->userSession->hasNotRole('admin')) $this->redirect('home');
 		
 		$manager->deleteComment($id);		
 
@@ -79,16 +78,8 @@ class CommentController extends View {
 		$manager = new CommentManager();
 		$manager->reportCom($id);
 		$CommentS = $manager->getComment($id);
-		
-		if($CommentS->getRating() > -5)
-		{
-			
-			$this->redirect('post/id/'.''.$postId);
-		} else
-		{
-			$manager->deleteComment($id);
-			$this->redirect('post/id/'.''.$postId);
-		}		
+
+		$this->redirect('post/id/'.''.$postId);	
 	}
 
 }

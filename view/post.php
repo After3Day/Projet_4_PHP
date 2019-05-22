@@ -27,24 +27,31 @@
 			</div>
 
 			<?php if(isset($Comments)):?>
-			<h2 >Commentaires</h2>
-			<div class="container2">
+				<h2 >Commentaires</h2>
 				<?php foreach($Comments as $comment):?>
-					<div class="post">
-						<div class="PostContent"><?php echo $comment->getContent();?></div>
-						<br />
-						<span class="AuthorName"><?php echo $comment->getPseudo();?>,</span>
-						<span class="CreatedAt"><?php echo $comment->getCreatedAt()->format('d/m/Y');?></span>
-						<?php if(($comment->getPseudo() === $userSession->getPseudo()) || $userSession->hasRole('admin')):?>
-						<a href="<?php echo HOST.'editCom/postId/'.$SPost->getId().'/id/'.$comment->getId();?>">Éditer</a>
-						<a href="<?php echo HOST.'deleteCom/postId/'.$SPost->getId().'/id/'.$comment->getId();?>">Supprimer</a>
-							<?php if($userSession->isLogged()):?>
-							<a href="<?php echo HOST.'report/postId/'.$SPost->getId().'/id/'.$comment->getId();?>">Reporter </a><?php echo $comment->getRating();?>
-							<?php endif;?>	
+					<?php if($comment->getRating() != 0 || $userSession->hasRole('admin')):?>
+						<?php if($comment->getRating() != 1):?>
+						<?php 	$color='red' ?>
+						<?php else :?>
+						<?php 	 $color='black';?>
 						<?php endif;?>
-					</div>
+						<div class="container2" style="color: <?php echo $color?>">
+							<div class="post">
+								<div class="PostContent"><?php echo $comment->getContent();?></div>
+								<br />
+								<span class="AuthorName"><?php echo $comment->getPseudo();?>,</span>
+								<span class="CreatedAt"><?php echo $comment->getCreatedAt()->format('d/m/Y');?></span>
+								<?php if(($comment->getPseudo() === $userSession->getPseudo()) || $userSession->hasRole('admin')):?>
+								<a href="<?php echo HOST.'editCom/postId/'.$SPost->getId().'/id/'.$comment->getId();?>">Éditer</a>
+								<a href="<?php echo HOST.'deleteCom/postId/'.$SPost->getId().'/id/'.$comment->getId();?>">Supprimer</a>
+								<?php if($userSession->isLogged() && !($comment->getRating() != 1)):?>
+								<a href="<?php echo HOST.'report/postId/'.$SPost->getId().'/id/'.$comment->getId();?>">Reporter </a>
+								<?php endif;?>	
+								<?php endif;?>
+							</div>
+						</div>
+					<?php endif;?>
 				<?php endforeach;?>
-			</div>
 			<?php endif;?>
 		</div>
 		<div class="col-md-3"></div>
