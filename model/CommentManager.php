@@ -21,10 +21,12 @@ class CommentManager extends Manager {
 
 			$comment->hydrate($row);
 			
-			$Comments[] = $comment;
+			$CommentS[] = $comment;
 		};
 
-		return $Comments;
+		if(empty($CommentS)) return $CommentS = NULL;
+
+		return $CommentS;
 
 	}
 

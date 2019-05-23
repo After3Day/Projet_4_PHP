@@ -7,26 +7,6 @@
 	    z-index: 1;
 	}
 
-
-
-	#Logo {
-		display: flex;
-		flex-direction: row;
-		font-size: 2.5em;
-		line-height: 2.5em;
-	}
-
-	#Logo img {
-		width: auto;
-		height: auto;
-		margin: auto;
-	}
-
-	#Logo span {
-		margin-left: 5px;
-		text-decoration: underline;
-	}
-
 	footer {
       background-color: #555;
       color: white;
@@ -60,7 +40,6 @@
 	}
 
 .post {
-	margin: 15px;
 	border: 1px  solid black;
 	width: 100%;
 	padding: 1%;

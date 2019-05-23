@@ -1,9 +1,9 @@
 <div class="container-fluid">
 	<div class="row">	
-		<div class="col-md-3">
+		<div class="col-md-1">
 			
 		</div>
-		<div class="col-md-6">
+		<div class="col-md-10">
 		<h2>Mon dernier Post</h2>
 				<div  class="post">
 					<a href="<?php echo HOST.'post/id/'.$LastPost->getId()?>"><h3><?php echo $LastPost->getName();?></h3></a>
@@ -23,7 +23,7 @@
 					</div>				
 				</div>
 			</div>
-		<div class="col-md-3">
+		<div class="col-md-1">
 			
 		</div>
 	</div>

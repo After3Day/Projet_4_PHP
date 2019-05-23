@@ -85,7 +85,8 @@ class Routeur
             
 
         } else  {
-            echo '404';
+            $newController = new View();
+            $newController->render('404');
         }
     }
 }

@@ -1,9 +1,9 @@
 <div class="container-fluid">
 	<div class="row">	
-		<div class="col-md-3">
+		<div class="col-md-1 hidden-md-down">
 			
 		</div>
-		<div class="col-md-6">
+		<div class="col-md-10">
 			<div class="container2">
 
 				<div class="post">
@@ -54,6 +54,6 @@
 				<?php endforeach;?>
 			<?php endif;?>
 		</div>
-		<div class="col-md-3"></div>
+		<div class="col-md-1 hidden-md-down"></div>
 	</div>
 </div>			
