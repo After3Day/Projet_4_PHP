@@ -68,4 +68,14 @@ class Home extends View
 		$this->render('connected');
 	}
 
+	public function show403()
+	{
+		$this->render('403');
+	}
+
+	public function show404()
+	{
+		$this->render('404');
+	}
+
 }

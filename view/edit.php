@@ -26,8 +26,9 @@
 						<legend>Éditeur</legend>
 						<label class="col-sm-4 control-label" for="title">Titre :</label><input name="title" type="text" id="title" class="form-control input-md" required="" value="<?php echo $title;?>"/><br />
 						<textarea name="content" type="text" id="content"><?php echo $content;?></textarea><br />
+						<span class="help-block" id="ErrNew" style="color:red;"></span>
 					</fieldset>
-					<input id="loginBut" class="btn btn-primary" type="submit" value="Soumettre" />
+					<button  id="SubBut" class="btn btn-primary" type="submit" value="" >Soumettre</button>
 					</form>
 				</div>
 			</div>

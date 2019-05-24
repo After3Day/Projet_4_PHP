@@ -14,7 +14,7 @@ class CommentController extends View {
 		$CommentS = $manager->getComment($id);
 		$pseudo = $this->userSession->getPseudo();
 
-		if($pseudo != $CommentS->getPseudo() && $this->userSession->hasNotRole('admin')) $this->redirect('posts');
+		if($pseudo != $CommentS->getPseudo() && $this->userSession->hasNotRole('admin')) $this->redirect('403');
 
 		$this->render('editCom', array('CommentS' => $CommentS));
 	}
@@ -61,7 +61,7 @@ class CommentController extends View {
 		$CommentS = $manager->getComment($id);
 		$pseudo = $this->userSession->getPseudo();
 
-		if($pseudo != $CommentS->getPseudo() && $this->userSession->hasNotRole('admin')) $this->redirect('home');
+		if($pseudo != $CommentS->getPseudo() && $this->userSession->hasNotRole('admin')) $this->redirect('403');
 		
 		$manager->deleteComment($id);		
 

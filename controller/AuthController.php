@@ -31,6 +31,7 @@ class AuthController extends View
 
 	public function IsValid($request)
 	{
+		if($this->userSession->isLogged()) $this->redirect('home');
 
 		$pseudo 	= $request->get('pseudo');
 		$password 	= $request->get('password');
@@ -53,9 +54,13 @@ class AuthController extends View
 		
 
 		if(isset($erm) || isset($erp) || isset($errs)){
+			$user->setPseudo($pseudo);
+			$user->setName($name);
+			$user->setSurname($surname);
+			$user->setEmail($email);
 			$this->render('register', array('errors' => $errors, 'user' => $user));
 		} else {
-			$manager->register($_POST);
+			$manager->register($pseudo, $password, $name, $surname, $email);
 			$this->redirect('home');
 		}
 

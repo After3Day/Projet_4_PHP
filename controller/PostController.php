@@ -5,7 +5,7 @@ class PostController extends View
 	
 	public function editArticle($request) {
 
-		if($this->userSession->hasNotRole('admin')) $this->redirect();
+		if($this->userSession->hasNotRole('admin')) $this->redirect('403');
 
 		$id = $request->get('id');
 		
@@ -17,7 +17,7 @@ class PostController extends View
 
 	public function createArticle($request) {
 
-		if($this->userSession->hasNotRole('admin'))  $this->redirect();
+		if($this->userSession->hasNotRole('admin'))  $this->redirect('403');
 
 		$name = $request->get('title');
 		$content = $request->get('content');
@@ -32,7 +32,7 @@ class PostController extends View
 
 	public function updateArticle($request) {
 
-		if($this->userSession->hasNotRole('admin'))  $this->redirect();
+		if($this->userSession->hasNotRole('admin'))  $this->redirect('403');
 
 		$id = $request->get('id');
 		$title = $request->get('title');
@@ -47,12 +47,17 @@ class PostController extends View
 
 	public function deleteArticle($request) {
 
-		if($this->userSession->hasNotRole('admin'))  $this->redirect();
+		if($this->userSession->hasNotRole('admin'))  $this->redirect('403');
 
 		$id = $request->get('id');
 
+		$manager2 = new CommentManager();
+		$manager2->deleteViaPost($id);
+		
 		$manager = new PostManager();
 		$manager->deletePost($id);
+
+		
 
 		$this->redirect('home');
 	}

@@ -12,6 +12,8 @@ class Routeur
             "registerForm"  => ["controller" => 'Home',             "method" => 'showRegistration', "area" => ''],
             "new"           => ["controller" => 'Home',             "method" => 'showEditForm',     "area" => ''],
             "connect"       => ["controller" => 'Home',             "method" => 'showConnect',      "area" => ''],
+            "403"           => ["controller" => 'Home',             "method" => 'show403',          "area" => ''],
+            "404"           => ["controller" => 'Home',             "method" => 'show404',          "area" => ''],
             "register"      => ["controller" => 'AuthController',   "method" => 'isValid',          "area" => ''],
             "connexion.php" => ["controller" => 'AuthController',   "method" => 'signin',           "area" => ''],
             "logout"        => ["controller" => 'AuthController',   "method" => 'signout',          "area" => ''],

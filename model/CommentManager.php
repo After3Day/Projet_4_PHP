@@ -95,6 +95,17 @@ class CommentManager extends Manager {
 		$req->execute();		
 	}
 
+	public function deleteViaPost($id)
+	{
+		$dbh = $this->dbh;
+
+		$query = "DELETE FROM comments
+					WHERE postId = :postId";
+		$req = $dbh->prepare($query);
+		$req->bindParam('postId', $id , PDO::PARAM_INT);
+		$req->execute();		
+	}
+
 	public function reportCom($id)
 	{
 		$dbh = $this->dbh;

@@ -6,27 +6,26 @@
 class UserManager extends Manager
 {
 
-	public function register($values)
+	public function register($pseudo, $password, $name, $surname, $email)
 	{
 		$dbh = $this->dbh;
 
-		$password = password_hash($values['password'], PASSWORD_DEFAULT);
+		$password = password_hash($password, PASSWORD_DEFAULT);
 
 		$query = "INSERT INTO users(name, surname, pseudo, email, password, role) 
 					VALUES(:name, :surname, :pseudo, :email, :password, :role)";
 					
 		$req  = $dbh->prepare($query);
+		$req->bindParam('pseudo', $pseudo, PDO::PARAM_STR);
+		$req->bindParam('name', $name, PDO::PARAM_STR);
+		$req->bindParam('surname', $surname, PDO::PARAM_STR);
+		$req->bindParam('email', $email, PDO::PARAM_STR);
+		$req->bindParam('password', $password, PDO::PARAM_STR);
+		$role = 'user';
+		$req->bindParam('role', $role, PDO::PARAM_STR);
 
-		$req->execute(array(
-			'name' => $values['name'],
-			'surname' => $values['surname'],
-			'pseudo' => $values['pseudo'],
-			'email' => $values['email'],
-			'password' => $password,
-			'role' => 'user',
-			));
+		$req->execute();
 
-		header('Location:index.php');
 	}
 
 	public function login($pseudo, $password)

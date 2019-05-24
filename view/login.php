@@ -36,7 +36,6 @@
 							  <label class="col-sm-4 control-label" for="password">Mot de passe</label>
 							  <div class="col-sm-4">
 							    <input id="password" name="password" type="password" placeholder="" class="form-control input-md" required="">
-							    <span class="help-block">5 caractères minimums</span>
 							  </div>
 							</div>
 
