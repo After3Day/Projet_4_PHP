@@ -2,7 +2,6 @@
 
 class CommentManager extends Manager {
 
-
 	public function getComments($postId)
 	{
 		$dbh = $this->dbh;

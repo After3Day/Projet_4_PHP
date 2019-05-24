@@ -42,6 +42,8 @@ class PostController extends View
 		$manager = new PostManager();
 
 		$manager->updatePost($id, $title, $content, $author);
+
+		$this->redirect('posts');
 		
 	}
 
@@ -59,6 +61,6 @@ class PostController extends View
 
 		
 
-		$this->redirect('home');
+		$this->redirect('posts');
 	}
 }
