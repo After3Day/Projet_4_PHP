@@ -8,38 +8,30 @@
 ?>
 
 
-<div class="container-fluid">
-	<div class="row">	
-		<div class="col-sm-2 hidden-sm-down">
-			
-		</div>
-		<div class="col-sm-8">
-			<div class="container2">
-				<div class="post">
-					<form class="form-horizontal" method="post" action="connexion.php" enctype="multipart/form-data">
+<div class="regular-page-wrap ">
+	<div class="container container2">
+		<div class="row justify-content-center">
+			<div class="col-md-12 col-lg-12">
+				<div class="contact-form">
+					<h5>Connexion</h5>
+					<form method="post" action="connexion.php" enctype="multipart/form-data">
 						<fieldset>
-
-						<!-- Form Name -->
-						<legend>Connexion</legend>
-
-							<!-- Text input-->
-							<div class="form-group">
-								<label class="col-sm-4 control-label" for="pseudo">Pseudo</label>  
-								<div class="col-sm-4">
-								<input id="pseudo" name="pseudo" type="text" value="<?php echo $pseudo;?>" class="form-control input-md" required="">
-								<span class="help-block" style="color:red;"><?php echo $errors;?></span>
-								</div>
-							</div>
-
-							<!-- Password input-->
-							<div class="form-group">
-							  <label class="col-sm-4 control-label" for="password">Mot de passe</label>
-							  <div class="col-sm-4">
-							    <input id="password" name="password" type="password" placeholder="" class="form-control input-md" required="">
-							  </div>
-							</div>
-
-							
+							<!-- Pseudo input-->
+							<div class="group" style="max-width: 50%;">
+	                            <input type="text" name="pseudo" id="pseudo"  value="<?php echo $pseudo;?>" required>
+	                            <span class="highlight"></span>
+	                            <span class="bar"></span>
+	                            <label for="pseudo">Pseudo</label>
+	                            <span class="help-block" style="color:red;"><?php echo $errors;?></span>
+	                        </div>
+	                        <!-- Password input-->
+	                        <div class="group" style="max-width: 50%;">
+	                            <input type="password" name="password" id="password"  value="" required>
+	                            <span class="highlight"></span>
+	                            <span class="bar"></span>
+	                            <label for="password">Mot de passe</label>
+	                            
+	                        </div>
 							<!-- Button (Double) -->
 							<div class="form-group">
 							  <label class="col-sm-4 hidden-xs-down control-label" for="button1id"></label>
@@ -53,6 +45,6 @@
 					</form>
 				</div>
 			</div>
-		<div class="col-sm-2 hidden-sm-down"></div>
+		</div>
 	</div>
-</div>					
+</div>

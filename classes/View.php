@@ -23,7 +23,7 @@ class View
 		extract($params);
 
 		$userSession = $this->userSession;
-
+        
 		ob_start();
 		include_once(VIEW.$template.'.php');
 		$contentPage = ob_get_clean();

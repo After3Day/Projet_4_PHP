@@ -29,78 +29,73 @@
 }
 ?>
 
-<div class="container-fluid">
-	<div class="row">	
-		<div class="col-sm-2 hidden-sm-down">
-			
-		</div>
-		<div class="col-sm-10">
-			<div class="container2">
-				<form class="form-horizontal" method="post" action="register" enctype="multipart/form-data">
+<div class="regular-page-wrap ">
+	<div class="container container2">
+		<div class="row justify-content-center">
+			<div class="col-md-12 col-lg-12">
+				<div class="contact-form">
+					<h5>Formulaire d'inscription</h5>
+					<form class="form-horizontal" method="post" action="register" enctype="multipart/form-data">
 					<fieldset>
+						<!-- Pseudo input-->
+							<div class="group" style="max-width: 50%;">
+								<span class="help-block" style="color:red;"><?php echo $errorsPseudo;?></span>
+	                            <input type="text" name="pseudo" id="pseudo"  value="<?php echo $pseudo;?>" required>
+	                            <span class="highlight"></span>
+	                            <span class="bar"></span>
+	                            <label for="pseudo">Pseudo</label>
+	                            <span class="help-block">4 à 16 caractères, lettres ou chiffres</span>
+								<span class="help-block" style="color:red;"><?php echo $ErrPseudo?></span>
+	                        </div>
 
-					<!-- Form Name -->
-					<legend>Formulaire d'inscritpion</legend>
+	                    <!-- Password input-->
+							<div class="group" style="max-width: 50%;">
+	                            <input type="password" name="password" id="password"  value="" required>
+	                            <span class="highlight"></span>
+	                            <span class="bar"></span>
+	                            <label for="password">Mot de passe</label>
+	                            <span class="help-block">5 à 16 caractères, lettres ou chiffres</span>
+								<span class="help-block" style="color:red;"><?php echo $ErrPass;?></span>
+	                        </div>
 
-						<!-- Text input-->
-						<div class="form-group">
-							<label class="col-sm-4 control-label" for="pseudo">Pseudo</label>  
-							<div class="col-sm-4">
-							<span class="help-block" style="color:red;"><?php echo $errorsPseudo;?></span>
-							<input id="pseudo" name="pseudo" type="text" placeholder="" value="<?php echo $pseudo;?>" class="form-control input-md" required="">
-							<span class="help-block">4 à 16 caractères, lettres ou chiffres</span>
-							<span class="help-block" style="color:red;"><?php echo $ErrPseudo?></span>
-							</div>
-						</div>
+	                    <!-- Password Confirm input-->
+							<div class="group" style="max-width: 50%;">
+	                            <input type="password" name="confirm" id="confirm"  value="" required>
+	                            <span class="highlight"></span>
+	                            <span class="bar"></span>
+	                            <label for="confirm">Confirmation de mot de passe</label>
+	                            <span class="help-block" style="color:red;"><?php echo $ErrConf;?></span>
+	                        </div>
 
-						<!-- Password input-->
-						<div class="form-group">
-							<label class="col-sm-4 control-label" for="password">Mot de passe</label>
-							<div class="col-sm-4">
-							<input id="password" name="password" type="password" placeholder="" value="" class="form-control input-md" required="">
-							<span class="help-block">5 à 16 caractères, lettres ou chiffres</span>
-							<span class="help-block" style="color:red;"><?php echo $ErrPass;?></span>
-							</div>
-						</div>
+	                    <!-- Name input-->
+							<div class="group" style="max-width: 50%;">
+	                            <input type="text" name="surname" id="surname"  value="<?php echo $surname;?>" required>
+	                            <span class="highlight"></span>
+	                            <span class="bar"></span>
+	                            <label for="surname">Nom de Famille</label>
+	                            <span class="help-block">4 à 16 caractères</span>
+								<span class="help-block" style="color:red;"><?php echo $ErrSurname;?></span>
+	                        </div>
 
-						<!-- Password input-->
-						<div class="form-group">
-							<label class="col-sm-4 control-label" for="confirm">Confirmation de mot de passe</label>
-							<div class="col-sm-4">
-							<input id="confirm" name="confirm" type="password" placeholder="" value="" class="form-control input-md" required="">
-							<span class="help-block" style="color:red;"><?php echo $ErrConf;?></span>
-							</div>
-						</div>
+	                    <!-- Surname input-->
+							<div class="group" style="max-width: 50%;">
+	                            <input type="text" name="name" id="name"  value="<?php echo $name;?>" required>
+	                            <span class="highlight"></span>
+	                            <span class="bar"></span>
+	                            <label for="name">Prénom</label>
+	                            <span class="help-block">4 à 16 caractères</span>
+								<span class="help-block" style="color:red;"><?php echo $ErrName;?></span>
+	                        </div>
 
-						<!-- Text input-->
-						<div class="form-group">
-							<label class="col-sm-4 control-label" for="surname">Nom</label>  
-							<div class="col-sm-4">
-							<input id="surname" name="surname" type="text" placeholder="" value="<?php echo $surname;?>" class="form-control input-md" required="">
-							<span class="help-block">4 à 16 caractères</span>
-							<span class="help-block" style="color:red;"><?php echo $ErrSurname;?></span>
-							</div>
-						</div>
-
-						<!-- Text input-->
-						<div class="form-group">
-							<label class="col-sm-4 control-label" for="name">Prénom</label>  
-							<div class="col-sm-4">
-							<input id="name" name="name" type="text" placeholder="" value="<?php echo $name;?>" class="form-control input-md" required="">
-							<span class="help-block">4 à 16 caractères</span>
-							<span class="help-block" style="color:red;"><?php echo $ErrName;?></span>
-							</div>
-						</div>
-
-						<!-- Text input-->
-						<div class="form-group">
-							<label class="col-sm-4 control-label" for="email">Votre adresse Mail</label>  
-							<div class="col-sm-4">
-							<span class="help-block" style="color:red;"><?php echo $errorsMail;?></span>
-							<input id="email" name="email" type="text" placeholder="" value="<?php echo $email;?>" class="form-control input-md" required="">
-							<span class="help-block" style="color:red;"><?php echo $ErrEmail;?></span>
-							</div>
-						</div>
+	                    <!-- Email input-->
+							<div class="group" style="max-width: 50%;">
+								<span class="help-block" style="color:red;"><?php echo $errorsMail;?></span>
+	                            <input type="text" name="email" id="email"  value="<?php echo $email;?>" required>
+	                            <span class="highlight"></span>
+	                            <span class="bar"></span>
+	                            <label for="email">E-mail</label>
+	                            <span class="help-block" style="color:red;"><?php echo $ErrEmail;?></span>
+	                        </div>
 
 						<!-- Button -->
 						<div class="form-group">

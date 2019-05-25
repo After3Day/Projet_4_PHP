@@ -21,7 +21,7 @@ class CommentController extends View {
 
 	public function updateCom($request)
 	{
-		if($this->userSession->hasNotRole('user'))  $this->redirect('connect');
+		if($this->userSession->hasNotRole('user') && $this->userSession->hasNotRole('admin'))  $this->redirect('connect');
 
 		$id = $request->get('id');
 		$postId = $request->get('postId');
@@ -39,14 +39,12 @@ class CommentController extends View {
 		if(!$this->userSession->isLogged())  $this->redirect('connect');
 
 		$pseudo = $this->userSession->getPseudo();
-		$content = $request->get('content2');
+		$content = $request->get('content');
 		$postId = $request->get('id');
 
 		$manager = new CommentManager();
 		$manager->newComment($pseudo, $content, $postId);
-		$Comments = $manager->getComments($postId);
-
-		$this->render('', array('Comments' => $Comments));
+		
 		$this->redirect('post/id/'.''.$postId);
 	}
 

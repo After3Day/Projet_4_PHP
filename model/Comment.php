@@ -6,7 +6,7 @@ class Comment {
     private $pseudo;
     private $content;
     private $rating;
-    private $postId;
+    private $IdPost;
     private $createdAt;
 
     public function hydrate(array $data)
@@ -139,6 +139,26 @@ class Comment {
     public function setCreatedAt($createdAt)
     {
         $this->createdAt = $createdAt;
+
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getIdPost()
+    {
+        return $this->IdPost;
+    }
+
+    /**
+     * @param mixed $IdPost
+     *
+     * @return self
+     */
+    public function setIdPost($IdPost)
+    {
+        $this->IdPost = $IdPost;
 
         return $this;
     }

@@ -2,10 +2,9 @@
 <html lang="fr" prefix="og: http://ogp.me/ns#">
     <head>
         <meta charset="utf-8"/>
+        
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <link href="https://fonts.googleapis.com/css?family=Playfair+Display:700,900" rel="stylesheet">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
-        <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css"/>
+        
         <link type="text/css" href="<?php echo ASSETS;?>css/style.css" rel="stylesheet">
 
         
@@ -14,44 +13,75 @@
 
 <body>
 
-    <header>
-            <nav class="navbar navbar-inverse navbar-fixed-top">
-                <div class="container-fluid">
-                    <div class="navbar-header">
-                      <a class="navbar-brand" href="<?php echo HOST;?>home">Blog de Jean Rochefort</a>
-                    </div>
-                         <div class="navbar-header">
-                            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                                <span class="sr-only">Toggle navigation</span>
-                                <span class="icon-bar"></span>
-                                <span class="icon-bar"></span>
-                                <span class="icon-bar"></span>
-                            </button>
-                        </div>
-                        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                            <ul class="nav navbar-nav">
-                            
-                            <li class=""> <a class="" href="<?php echo HOST;?>home"><span class="glyphicon glyphicon-home"></span> Accueil</a> </li>
-                            <li> <a class="" href="<?php echo HOST;?>posts">Mes&nbsp;Articles</a> </li>
-                            <?php if($userSession->hasRole('admin')):?>
-                            <li> <a class="" href="<?php echo HOST;?>new">Nouveaux</a> </li>
-                            <?php endif;?>
-                            </ul>
+    <!-- Preloader Start -->
+    <div id="preloader">
+        <div class="preload-content">
+            <div id="world-load"></div>
+        </div>
+    </div>
+    <!-- Preloader End -->
 
-                            <?php if(!$userSession->isLogged()):?>
-                            <ul class="nav navbar-nav navbar-right">
-                                <li> <a class="" href="<?php echo HOST;?>loginForm"><span class="glyphicon glyphicon-log-in"></span> Connexion</a> </li>
-                                <li> <a class="" href="<?php echo HOST;?>registerForm"><span class="glyphicon glyphicon-user"></span> Inscription</a> </li>
+    <!-- ***** Header Area Start ***** -->
+    <header class="header-area">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <nav class="navbar navbar-expand-lg">
+                        <!-- Logo -->
+                        <a class="nav-link link" href="<?php echo HOST;?>home"><span>Blog de Jean Rochefort</span></a>
+                        <!-- Navbar Toggler -->
+                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#worldNav" aria-controls="worldNav" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+                        <!-- Navbar -->
+                        <div class="collapse navbar-collapse" id="worldNav">
+                            <ul class="navbar-nav ml-auto">
+                                <li class="nav-item">
+                                    <a class="nav-link " href="<?php echo HOST;?>home"><span class="fa fa-home"></span> Accueil</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="<?php echo HOST;?>posts"><span class="fa fa-bookmark"></span> Mes&nbsp;Articles</a>
+                                </li>
+                                <?php if($userSession->hasRole('admin')):?>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="<?php echo HOST;?>new"><span class="fa fa-print"></span> Nouveaux</a>
+                                </li>
+                                <?php endif;?>
+                                <?php if(!$userSession->isLogged()):?>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="<?php echo HOST;?>loginForm"><span class="fa fa-sign-in"></span> Connexion</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="<?php echo HOST;?>registerForm"><span class="fa fa-user"></span> Inscription</a>
+                                </li>
+                                <?php else :?>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="<?php echo HOST;?>logout"><span class="fa fa-sign-out"></span> Déconnexion</a>
+                                </li>
+                                <?php endif;?>
                             </ul>
-                            <?php else :?>
-                            <ul class="nav navbar-nav navbar-right">
-                                <li> <a class="" href="<?php echo HOST;?>logout"><span class="glyphicon glyphicon-log-out"></span> Déconnexion</a> </li>
-                            </ul>
-                            <?php endif;?>
                         </div>
+                    </nav>
                 </div>
-            </nav>
+            </div>
+        </div>
     </header>
+    <!-- ***** Header Area End ***** -->
+
+    <!-- ********** Hero Area Start ********** -->
+    <div class="hero-area bg-img background-overlay" style="background-color: black; height: 100px;" >
+        <div class="container h-100">
+            <div class="row h-100 align-items-center justify-content-center">
+                <div class="col-12 col-md-8 col-lg-6">
+                    <div class="single-blog-title text-center">
+                        <!-- Catagory -->
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- ********** Hero Area End ********** -->
+
+
 
     <section  id="Content">
 
@@ -60,12 +90,32 @@
 
     </section>
 
-   <footer class="container-fluid text-center">
+   <footer>
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-10 align-self-center">
+                        <div style="text-align: center;">
+                            <p>Copyright © <script>document.write(new Date().getFullYear());</script> Erwan Pasche</p>
+                            <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                            Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+                            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
+                        </div>
+                    
+                </div>
+            </div>
+        </div>
+
+        <!-- jQuery (Necessary for All JavaScript Plugins) -->
+        <script src="<?php echo ASSETS;?>js/jquery/jquery-2.2.4.min.js"></script>
+        <!-- Popper js -->
+        <script src="<?php echo ASSETS;?>js/popper.min.js"></script>
+        <!-- Bootstrap js -->
+        <script src="<?php echo ASSETS;?>js/bootstrap.min.js"></script>
+        <!-- Plugins js -->
+        <script src="<?php echo ASSETS;?>js/plugins.js"></script>
+        <!-- Active js -->
+        <script src="<?php echo ASSETS;?>js/active.js"></script>
         
-            <div>Copyright © 2019 Erwan Pasche</div>
-        <script src="<?php echo ASSETS;?>js/javascript.js"></script>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
         <script src="https://cloud.tinymce.com/5/tinymce.min.js"></script>
         <script>tinymce.init({selector:'textarea'});</script>
     </footer>

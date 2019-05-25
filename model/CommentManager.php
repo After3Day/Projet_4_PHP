@@ -7,11 +7,11 @@ class CommentManager extends Manager {
 		$dbh = $this->dbh;
 
 		$query = "SELECT * FROM comments
-					WHERE postId = :postId
+					WHERE IdPost = :IdPost
 					ORDER BY rating ASC, createdAt ASC";
 
 		$req  = $dbh->prepare($query);
-		$req->bindParam('postId', $postId , PDO::PARAM_INT);
+		$req->bindParam('IdPost', $postId , PDO::PARAM_INT);
 		$req->execute();
 
 		while ($row = $req->fetch(PDO::FETCH_ASSOC)) {
@@ -54,14 +54,14 @@ class CommentManager extends Manager {
 	{
 		$dbh = $this->dbh;
 
-		$query = "INSERT INTO comments(pseudo, content, postId, createdAt)
-					VALUES (:pseudo, :content, :postId, NOW())";
+		$query = "INSERT INTO comments(pseudo, content, IdPost, createdAt)
+					VALUES (:pseudo, :content, :IdPost, NOW())";
 
 		$req = $dbh->prepare($query);
 
 		$req->bindParam('pseudo', $pseudo);
 		$req->bindParam('content', $content);
-		$req->bindParam('postId', $postId);
+		$req->bindParam('IdPost', $postId);
 
 		$req->execute();
 
@@ -72,14 +72,14 @@ class CommentManager extends Manager {
 		$dbh = $this->dbh;
 
 		$query = "UPDATE comments
-					SET content = :content, pseudo = :pseudo, postId = :postId
+					SET content = :content, pseudo = :pseudo, IdPost = :IdPost
 					WHERE id = :id";
 
 		$req = $dbh->prepare($query);
 		$req->bindParam('id', $id , PDO::PARAM_INT);
 		$req->bindParam('content', $content, PDO::PARAM_STR);
 		$req->bindParam('pseudo', $pseudo, PDO::PARAM_STR);
-		$req->bindParam('postId', $postId, PDO::PARAM_INT);
+		$req->bindParam('IdPost', $postId, PDO::PARAM_INT);
 		$req->execute();
 	}
 
@@ -94,17 +94,6 @@ class CommentManager extends Manager {
 		$req->execute();		
 	}
 
-	public function deleteViaPost($id)
-	{
-		$dbh = $this->dbh;
-
-		$query = "DELETE FROM comments
-					WHERE postId = :postId";
-		$req = $dbh->prepare($query);
-		$req->bindParam('postId', $id , PDO::PARAM_INT);
-		$req->execute();		
-	}
-
 	public function reportCom($id)
 	{
 		$dbh = $this->dbh;
@@ -116,9 +105,7 @@ class CommentManager extends Manager {
 		$req = $dbh->prepare($query);
 		$req->bindParam('id', $id , PDO::PARAM_INT);
 		$req->execute();
-
 	}
-
 
 	public function getEntityName(){}
 	

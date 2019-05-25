@@ -1,13 +1,10 @@
-<div class="container-fluid">
-	<div class="row">	
-		<div class="col-md-1 hidden-md-down">
-			
-		</div>
-		<div class="col-md-10">
-			<div class="container2">
+<div class="container">
+        <div class="row justify-content-center">
+            <div class="">
+                <div class="page-content">
 
-				<div class="post">
-					<h3><?php echo $SPost->getName();?></h3>
+				<div class="">
+					<h3 ><?php echo $SPost->getName();?></h3>
 					<br />
 					<div class="PostContent"><?php echo $SPost->getContent();?></div>
 					<br />
@@ -15,11 +12,12 @@
 					<span class="CreatedAt"><?php echo $SPost->getCreatedAt()->format('d/m/Y');?></span>
 				</div>
 
-				<div class="commentForm">
+				<div class="contact-form">
+					<h5>Ajouter un commentaire :</h5>
 					<form method="post" action="<?php echo HOST.'comment/id/'.$SPost->getId();?>">
 						<fieldset>
-							<legend>Ajouter un commentaire :</legend>
-							<textarea name="content2" type="text" id="content"></textarea><br />
+							
+							<textarea name="content" type="text" id="content" style="height: 300px;"></textarea><br />
 							<input id="loginBut" class="btn btn-primary" type="submit" value="Soumettre" />
 						</fieldset>
 					</form>
@@ -27,15 +25,15 @@
 			</div>
 
 			<?php if(isset($Comments)):?>
-				<h2 >Commentaires</h2>
+				<h2>Commentaires</h2>
 				<?php foreach($Comments as $comment):?>
 					<?php if($comment->getRating() != 0 || $userSession->hasRole('admin')):?>
 						<?php if($comment->getRating() != 1):?>
-						<?php 	$color='red' ?>
+						<?php 	$color='red'?>
 						<?php else :?>
 						<?php 	 $color='black';?>
 						<?php endif;?>
-						<div class="container2" style="color: <?php echo $color?>">
+						<div class="container3" style="color: <?php echo $color;?>">
 							<div class="post">
 								<div class="PostContent"><?php echo $comment->getContent();?></div>
 								<br />
@@ -53,7 +51,7 @@
 					<?php endif;?>
 				<?php endforeach;?>
 			<?php endif;?>
-		</div>
-		<div class="col-md-1 hidden-md-down"></div>
-	</div>
-</div>			
+			</div>
+        </div>
+    </div>
+</div>

@@ -52,14 +52,9 @@ class PostController extends View
 		if($this->userSession->hasNotRole('admin'))  $this->redirect('403');
 
 		$id = $request->get('id');
-
-		$manager2 = new CommentManager();
-		$manager2->deleteViaPost($id);
 		
 		$manager = new PostManager();
 		$manager->deletePost($id);
-
-		
 
 		$this->redirect('posts');
 	}

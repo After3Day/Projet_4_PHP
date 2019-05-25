@@ -1,6 +1,6 @@
 	
 	<div class="commentForm">
-		<form method="post" action="<?php echo HOST.'updateCom/postId/'.$CommentS->getPostId().'/id/'.$CommentS->getId();?>">
+		<form method="post" action="<?php echo HOST.'updateCom/postId/'.$CommentS->getIdPost().'/id/'.$CommentS->getId();?>">
 			<fieldset>
 				<legend>Modifier un commentaire : </legend>
 				<textarea name="content" type="text" id="content"><?php echo $CommentS->getContent();?></textarea><br />
